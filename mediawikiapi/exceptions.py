@@ -37,9 +37,9 @@ class PageError(MediaWikiAPIException):
 
   def __unicode__(self):
     if hasattr(self, 'title'):
-      return u"\"{0}\" does not match any pages. Try another query!".format(self.title)
+      return "\"{0}\" does not match any pages. Try another query!".format(self.title)
     else:
-      return u"Page id \"{0}\" does not match any pages. Try another id!".format(self.pageid)
+      return "Page id \"{0}\" does not match any pages. Try another id!".format(self.pageid)
 
 
 class LanguageError(MediaWikiAPIException):
@@ -49,7 +49,7 @@ class LanguageError(MediaWikiAPIException):
         self.language = language
     
     def __unicode__(self):
-        return u"\"{0}\" is not a language prefix available in Wikipedia. Run wikipedia.languages().keys() to get available prefixes.".format(self.language)
+        return "\"{0}\" is not a language prefix available in Wikipedia. Run wikipedia.languages().keys() to get available prefixes.".format(self.language)
 
 
 class DisambiguationError(MediaWikiAPIException):
@@ -69,7 +69,7 @@ class DisambiguationError(MediaWikiAPIException):
     self.details = details
 
   def __unicode__(self):
-    return u"\"{0}\" may refer to: \n{1}".format(self.title, '\n'.join(self.options))
+    return "\"{0}\" may refer to: \n{1}".format(self.title, '\n'.join(self.options))
 
 
 class RedirectError(MediaWikiAPIException):
@@ -79,7 +79,7 @@ class RedirectError(MediaWikiAPIException):
     self.title = title
 
   def __unicode__(self):
-    return u"\"{0}\" resulted in a redirect. Set the redirect property to True to allow automatic redirects.".format(self.title)
+    return "\"{0}\" resulted in a redirect. Set the redirect property to True to allow automatic redirects.".format(self.title)
 
 
 class HTTPTimeoutError(MediaWikiAPIException):
@@ -89,4 +89,4 @@ class HTTPTimeoutError(MediaWikiAPIException):
     self.query = query
 
   def __unicode__(self):
-    return u"Searching for \"{0}\" resulted in a timeout. Try again in a few seconds, and make sure you have rate limiting set to True.".format(self.query)
+    return "Searching for \"{0}\" resulted in a timeout. Try again in a few seconds, and make sure you have rate limiting set to True.".format(self.query)

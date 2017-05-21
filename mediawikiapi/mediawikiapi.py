@@ -1,4 +1,4 @@
-from __future__ import unicode_literals
+
 
 import time
 from bs4 import BeautifulSoup
@@ -94,7 +94,7 @@ class MediaWikiAPI(object):
 
     search_pages = raw_results['query'].get('pages', None)
     if search_pages:
-      search_results = (v['title'] for k, v in search_pages.items() if k != '-1')
+      search_results = (v['title'] for k, v in list(search_pages.items()) if k != '-1')
     else:
       search_results = (d['title'] for d in raw_results['query']['geosearch'])
 

@@ -33,7 +33,7 @@ class WikipediaPage(object):
         getattr(self, prop)
 
   def __repr__(self):
-    return stdout_encode(u'<WikipediaPage \'{}\'>'.format(self.title))
+    return stdout_encode('<WikipediaPage \'{}\'>'.format(self.title))
 
   def __eq__(self, other):
     try:
@@ -156,7 +156,7 @@ class WikipediaPage(object):
 
       pages = request['query']['pages']
       if 'generator' in query_params:
-        for datum in pages.values():  # in python 3.3+: "yield from pages.values()"
+        for datum in list(pages.values()):  # in python 3.3+: "yield from pages.values()"
           yield datum
       else:
         for datum in pages[self.pageid][prop]:
@@ -388,7 +388,7 @@ class WikipediaPage(object):
            `section_title` and the next subheading, which is often empty.
     '''
 
-    section = u"== {} ==".format(section_title)
+    section = "== {} ==".format(section_title)
     try:
       index = self.content.index(section) + len(section)
     except ValueError:

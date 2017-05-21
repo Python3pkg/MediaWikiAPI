@@ -3,7 +3,7 @@ from decimal import Decimal
 import unittest
 import mediawikiapi
 from mediawikiapi import MediaWikiAPI
-from request_mock_data import mock_data
+from .request_mock_data import mock_data
 
 api = MediaWikiAPI()
 # mock out _wiki_request
@@ -64,9 +64,9 @@ class TestPageSetUp(unittest.TestCase):
       error_raised = True
       options = e.options
     self.assertTrue(error_raised)
-    disambiguation_list = [u'Template (file format)', u'Template (C++)', u'Template metaprogramming',
-                           u'Template method pattern', u'Template processor', u'Template (word processing)',
-                           u'Web template', u'Template (racing)', u'Template (novel)']
+    disambiguation_list = ['Template (file format)', 'Template (C++)', 'Template metaprogramming',
+                           'Template method pattern', 'Template processor', 'Template (word processing)',
+                           'Web template', 'Template (racing)', 'Template (novel)']
     for disambiguation_opt in disambiguation_list:
       self.assertTrue(disambiguation_opt in options)
 

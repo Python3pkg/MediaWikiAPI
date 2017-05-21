@@ -56,7 +56,7 @@ class Language(object):
     * language - (string) a string specifying the language
     '''
     language=language.lower()
-    if language in predefined_languages.keys():
+    if language in list(predefined_languages.keys()):
       self._language = language
     else:
       raise LanguageError(language)
